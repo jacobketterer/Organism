@@ -1,4 +1,4 @@
-import java.util.LinkedList;
+import java.util.HashSet;
 
 
 public class Analyzer extends Cell {
@@ -6,8 +6,8 @@ public class Analyzer extends Cell {
   final static int REST_POTENTIAL = 0;
   
   public Analyzer() {  
-    this.parents = new LinkedList<Cell>();
-    this.children = new LinkedList<Cell>();
+    this.parents = new HashSet<Cell>();
+    this.children = new HashSet<Cell>();
     this.potential = REST_POTENTIAL;
   }
   

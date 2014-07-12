@@ -1,17 +1,16 @@
-import java.util.LinkedList;
+import java.util.*;
 
 public abstract class Cell {
 
-  protected int food;
-  protected int potential;
-  public LinkedList<Cell> children, parents;
+  protected int potential, food;
+  protected HashSet<Cell> children, parents;
 
   public void addChild(Cell child) {
+    food -= child.getFood();
     children.add(child);  
   }
   
   public void apoptose() {
-    System.out.println("Apoptosed");
     for (Cell child : children) {
       this.children.remove(child);
       if (child.parents.size() == 1) { child.apoptose(); } 
@@ -21,10 +20,20 @@ public abstract class Cell {
       this.parents.remove(parent);
       parent.children.remove(this);
     }
+    System.out.println("Apoptosed");
   }
   
   public void feed(int food) {
     this.food = food;
+  }
+  
+  public int getFood() {
+    return food;
+  }
+  
+  public int hashCode() {
+    int hash = 5 * food * potential;
+    return hash;
   }
   
   public void print() {

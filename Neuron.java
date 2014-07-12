@@ -1,4 +1,4 @@
-import java.util.LinkedList;
+import java.util.HashSet;
 
 
 public class Neuron extends Cell {
@@ -7,15 +7,15 @@ public class Neuron extends Cell {
   final static int REST_FOOD = 500;
   
   public Neuron(Cell child) {
-    this.children = new LinkedList<Cell>();
+    this.children = new HashSet<Cell>();
     this.children.add(child);
-    child.parents = new LinkedList<Cell>();
+    child.parents = new HashSet<Cell>();
     child.parents.add(this);
     food = REST_FOOD;
     potential = REST_POTENTIAL;
   }
   
-  public Neuron(LinkedList<Cell> children) {
+  public Neuron(HashSet<Cell> children) {
     this.potential = REST_POTENTIAL;
     this.children = children;
     for (Cell child : this.children) { child.parents.add(this); }

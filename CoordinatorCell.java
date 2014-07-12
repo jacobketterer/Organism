@@ -1,17 +1,17 @@
-import java.util.LinkedList;
+import java.util.HashSet;
 
 
 public class CoordinatorCell extends Cell {
 
   public CoordinatorCell(Cell child) {
-    this.children = new LinkedList<Cell>();
+    this.children = new HashSet<Cell>();
     this.children.add(child);
-    child.parents = new LinkedList<Cell>();
+    child.parents = new HashSet<Cell>();
     child.parents.add(this);
-    this.parents = new LinkedList<Cell>();
+    this.parents = new HashSet<Cell>();
   }
   
-  public CoordinatorCell(LinkedList<Cell> children) { 
+  public CoordinatorCell(HashSet<Cell> children) { 
     this.children = children;
   }
   
